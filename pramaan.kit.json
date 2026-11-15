@@ -1,9 +1,9 @@
 {
   "id": "rota",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "title": "Staff rota",
   "summary": "Plan weekly shifts, invite staff, approve swaps and time off, and publish the rota.",
-  "category": "hrms",
+  "category": "business-operations",
   "stack": {
     "contract": "1",
     "template": "data",
