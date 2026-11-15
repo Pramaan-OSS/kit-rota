@@ -1,0 +1,107 @@
+{
+  "kit": "rota",
+  "version": "0.1.0",
+  "digest": "sha256:6389ccf091866bc96e68399b1431ec757882d06c9b60a63c52215a4f3b6720eb",
+  "contract": "1",
+  "green": false,
+  "localGreen": true,
+  "scope": "Local gates complete; canonical container CI runs in product-loop on pinning.",
+  "ranAt": "2026-11-14T05:26:56.191Z",
+  "run": null,
+  "gates": [
+    {
+      "id": "contract",
+      "ok": true,
+      "evidence": "97 files, 5 migrations, 15 journeys",
+      "notes": [
+        "lib/accounts.ts is the starter's at 370419379645, and trunk's has changed since (drift: review it)"
+      ]
+    },
+    {
+      "id": "licence",
+      "ok": true,
+      "evidence": "MIT; derived, written by person",
+      "notes": [
+        "The similarity check against the named sources is not built yet (docs/contracts/kits.md)"
+      ]
+    },
+    {
+      "id": "secrets",
+      "ok": true,
+      "evidence": "Scanned 99 source files for credential-shaped material."
+    },
+    {
+      "id": "packages",
+      "ok": true,
+      "evidence": "3 packages beyond the starter's, every one under an allowed licence"
+    },
+    {
+      "id": "install",
+      "ok": true,
+      "evidence": "Node 24.18.0, pnpm 11.15.1; frozen lockfile, scripts and pnpmfile disabled. Package and lock match Portal unchanged."
+    },
+    {
+      "id": "check",
+      "ok": true,
+      "evidence": "Clean git archive lint and typecheck pass. In-place production build passes with two workers, 1082 MiB peak summed RSS, 3.56 seconds. Two inherited lint warnings."
+    },
+    {
+      "id": "tests",
+      "ok": true,
+      "evidence": "28 passed, zero failed/skipped; serial pnpm test peak summed RSS 533 MiB, below 819 MiB."
+    },
+    {
+      "id": "migrations",
+      "ok": true,
+      "evidence": "Five migrations apply to a fresh postgres:16-alpine database with 192 MiB RAM and 0.5 CPU. Database-level overlap constraint and concurrent claims tested."
+    },
+    {
+      "id": "draft",
+      "ok": true,
+      "evidence": "Local development startup: 1076 MiB peak summed RSS, first answer 2.467 seconds; ten public entry routes answered."
+    },
+    {
+      "id": "owner-pass",
+      "ok": true,
+      "evidence": "Valid owner pass opens owner settings once. Replayed, expired, forged and foreign-project passes rejected."
+    },
+    {
+      "id": "journeys",
+      "ok": true,
+      "evidence": "10 ships-working browser journeys and 9 additional checks passed; zero browser errors. Production app final peak 208 MiB; desktop and 390px mobile inspected."
+    },
+    {
+      "id": "blocks",
+      "ok": true,
+      "evidence": "Theme and password-reset pinned source hashes verified."
+    },
+    {
+      "id": "starter",
+      "ok": true,
+      "evidence": "17 starter/Portal file comparisons pass byte for byte. No new packages."
+    },
+    {
+      "id": "full-container-ci",
+      "ok": false,
+      "evidence": "Not run here, as instructed. Product-loop replaces this record during pinning."
+    }
+  ],
+  "measured": {
+    "on": "2026-11-14",
+    "by": "person",
+    "draft": {
+      "peakMiB": 1076,
+      "limitMiB": 2560,
+      "firstAnswerSeconds": 3
+    },
+    "verifier": {
+      "peakMiB": 1182,
+      "limitMiB": 2048,
+      "seconds": 4
+    },
+    "browser": {
+      "peakMiB": 211,
+      "limitMiB": 1024
+    }
+  }
+}

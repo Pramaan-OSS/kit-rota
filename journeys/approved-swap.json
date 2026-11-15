@@ -1,0 +1,195 @@
+{
+  "items": [
+    {
+      "id": "approved-swap",
+      "label": "A colleague takes an offered shift; a manager approves the reassignment.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/team"
+        },
+        {
+          "fill": "Name",
+          "value": "Swap giver"
+        },
+        {
+          "fill": "Email",
+          "value": "giver@rota.test"
+        },
+        {
+          "click": "Invite person"
+        },
+        {
+          "expectText": "Open one-time invitation"
+        },
+        {
+          "click": "Open one-time invitation"
+        },
+        {
+          "fill": "Choose a password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "fill": "Type it again",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Accept invite"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/team"
+        },
+        {
+          "fill": "Name",
+          "value": "Swap taker"
+        },
+        {
+          "fill": "Email",
+          "value": "taker@rota.test"
+        },
+        {
+          "click": "Invite person"
+        },
+        {
+          "expectText": "Open one-time invitation"
+        },
+        {
+          "click": "Open one-time invitation"
+        },
+        {
+          "fill": "Choose a password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "fill": "Type it again",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Accept invite"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "fill": "Week beginning (Monday)",
+          "value": "2099-06-15"
+        },
+        {
+          "click": "Create draft week"
+        },
+        {
+          "expectText": "Draft week"
+        },
+        {
+          "select": "Assign to",
+          "option": "Swap giver"
+        },
+        {
+          "fill": "Start (location time)",
+          "value": "2099-06-15T09:00"
+        },
+        {
+          "fill": "End (location time)",
+          "value": "2099-06-15T17:00"
+        },
+        {
+          "click": "Add shift"
+        },
+        {
+          "expectText": "Saved."
+        },
+        {
+          "click": "Publish week"
+        },
+        {
+          "expectText": "Published rota"
+        },
+        {
+          "enterAs": "visitor"
+        },
+        {
+          "goto": "/"
+        },
+        {
+          "fill": "Email",
+          "value": "giver@rota.test"
+        },
+        {
+          "fill": "Password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Sign in"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "click": "Offer swap"
+        },
+        {
+          "expectText": "Awaiting a colleague"
+        },
+        {
+          "enterAs": "visitor"
+        },
+        {
+          "goto": "/"
+        },
+        {
+          "fill": "Email",
+          "value": "taker@rota.test"
+        },
+        {
+          "fill": "Password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Sign in"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "click": "Take swap"
+        },
+        {
+          "expectText": "taken"
+        },
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "click": "Approve swap"
+        },
+        {
+          "expectText": "approved"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

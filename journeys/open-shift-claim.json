@@ -1,0 +1,116 @@
+{
+  "items": [
+    {
+      "id": "open-shift-claim",
+      "label": "Two colleagues claim one open shift; exactly one succeeds.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/team"
+        },
+        {
+          "fill": "Name",
+          "value": "Claim staff"
+        },
+        {
+          "fill": "Email",
+          "value": "claim@rota.test"
+        },
+        {
+          "click": "Invite person"
+        },
+        {
+          "expectText": "Open one-time invitation"
+        },
+        {
+          "click": "Open one-time invitation"
+        },
+        {
+          "fill": "Choose a password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "fill": "Type it again",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Accept invite"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "fill": "Week beginning (Monday)",
+          "value": "2099-06-22"
+        },
+        {
+          "click": "Create draft week"
+        },
+        {
+          "expectText": "Draft week"
+        },
+        {
+          "fill": "Start (location time)",
+          "value": "2099-06-22T09:00"
+        },
+        {
+          "fill": "End (location time)",
+          "value": "2099-06-22T17:00"
+        },
+        {
+          "click": "Add shift"
+        },
+        {
+          "expectText": "Saved."
+        },
+        {
+          "click": "Publish week"
+        },
+        {
+          "expectText": "Published rota"
+        },
+        {
+          "enterAs": "visitor"
+        },
+        {
+          "goto": "/"
+        },
+        {
+          "fill": "Email",
+          "value": "claim@rota.test"
+        },
+        {
+          "fill": "Password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Sign in"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "click": "Claim shift"
+        },
+        {
+          "expectText": "Saved."
+        },
+        {
+          "expectAbsent": "Claim shift"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

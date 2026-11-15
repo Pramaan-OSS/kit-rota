@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "blocks": [
+    {
+      "id": "password-reset",
+      "version": "0.1.0",
+      "source": "Pramaan-OSS/blocks",
+      "sourceCommit": "4577cabca086a430563c196b6cd86cc919f873c0",
+      "sourcePath": "registry/password-reset",
+      "licence": "MIT",
+      "sourceHashes": {
+        "registry/password-reset/README.md": "4e0fe6d2ac9063be68a3a1d94e86b87d95be15e5198a30e2b06cf0afa5f3208f",
+        "registry/password-reset/components/pramaan/password-reset/password-panel.tsx": "21c00ff55174a2b604fe46073e643ced6d8351b4f9acd140d1abaf49adb0bd08",
+        "registry/password-reset/lib/pramaan/password-reset.ts": "a7f3b5b19c8518bd5ee1a6685049a20c15133ed5ac226ad049d2288c9253c55b"
+      }
+    },
+    {
+      "id": "theme",
+      "version": "0.1.0",
+      "source": "Pramaan-OSS/blocks",
+      "sourceCommit": "4577cabca086a430563c196b6cd86cc919f873c0",
+      "sourcePath": "registry/theme",
+      "licence": "MIT",
+      "sourceHashes": {
+        "registry/theme/lib/pramaan/fonts.ts": "de90da679c962d19170f0dcd78f69558b435dd8a8aeba8b3bc176ecc754ff410",
+        "theme.css": "39e6aafb751ce69c964c0db7917af1b5112d9e64d0f9a5b2e38f48b1223bbdbc"
+      }
+    }
+  ],
+  "adaptations": {
+    "password-reset": "Taken as the CRM kit adapted it: the starter's reset-request and reset actions own the proofs, delivery goes only through the platform email module (lib/email.ts), and the panel and its words are kept, with the help line changed to the business that sent the invite. Signed-in password change is not shipped. Version 0.1.0 is the kit's snapshot label; the registry has no version field.",
+    "theme": "Taken as the CRM kit adapted it: fonts from bundled npm packages in the starter's layout and theme.css, no remote font imports."
+  }
+}

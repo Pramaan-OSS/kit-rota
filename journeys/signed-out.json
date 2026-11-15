@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "signed-out",
+      "label": "Signed-out visitors cannot read rota rows.",
+      "steps": [
+        {
+          "goto": "/rota"
+        },
+        {
+          "expectText": "Sign in"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

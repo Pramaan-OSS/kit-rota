@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "id": "create-week",
+      "label": "Create a draft week.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "fill": "Week beginning (Monday)",
+          "value": "2099-06-01"
+        },
+        {
+          "click": "Create draft week"
+        },
+        {
+          "expectText": "Draft week"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

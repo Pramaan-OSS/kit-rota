@@ -1,0 +1,14 @@
+.scratch/
+.evidence/
+node_modules/
+.next/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+
+app/routes.generated.ts
+
+/AGENTS.md
+/CLAUDE.md

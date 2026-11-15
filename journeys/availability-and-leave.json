@@ -1,0 +1,105 @@
+{
+  "items": [
+    {
+      "id": "availability-and-leave",
+      "label": "Staff save recurring availability and unavailable dates and request leave; a manager approves or declines.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/team"
+        },
+        {
+          "fill": "Name",
+          "value": "Leave staff"
+        },
+        {
+          "fill": "Email",
+          "value": "leave@rota.test"
+        },
+        {
+          "click": "Invite person"
+        },
+        {
+          "expectText": "Open one-time invitation"
+        },
+        {
+          "click": "Open one-time invitation"
+        },
+        {
+          "fill": "Choose a password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "fill": "Type it again",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Accept invite"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "goto": "/availability"
+        },
+        {
+          "select": "Weekday",
+          "option": "Tuesday"
+        },
+        {
+          "fill": "Available from",
+          "value": "09:00"
+        },
+        {
+          "fill": "Available until",
+          "value": "17:00"
+        },
+        {
+          "click": "Add weekly availability"
+        },
+        {
+          "expectText": "Tuesday 09:00:00"
+        },
+        {
+          "fill": "Unavailable date",
+          "value": "2099-08-01"
+        },
+        {
+          "click": "Add unavailable date"
+        },
+        {
+          "expectText": "Unavailable 2099-08-01"
+        },
+        {
+          "fill": "First day",
+          "value": "2099-08-02"
+        },
+        {
+          "fill": "Last day",
+          "value": "2099-08-03"
+        },
+        {
+          "click": "Request time off"
+        },
+        {
+          "expectText": "pending"
+        },
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/availability"
+        },
+        {
+          "click": "Approve time off"
+        },
+        {
+          "expectText": "approved"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

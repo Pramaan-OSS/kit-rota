@@ -1,0 +1,117 @@
+{
+  "items": [
+    {
+      "id": "publish-week",
+      "label": "A manager publishes an assigned week and sends notices.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/team"
+        },
+        {
+          "fill": "Name",
+          "value": "Publish staff"
+        },
+        {
+          "fill": "Email",
+          "value": "publish@rota.test"
+        },
+        {
+          "click": "Invite person"
+        },
+        {
+          "expectText": "Open one-time invitation"
+        },
+        {
+          "click": "Open one-time invitation"
+        },
+        {
+          "fill": "Choose a password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "fill": "Type it again",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Accept invite"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "fill": "Week beginning (Monday)",
+          "value": "2099-06-08"
+        },
+        {
+          "click": "Create draft week"
+        },
+        {
+          "expectText": "Draft week"
+        },
+        {
+          "select": "Assign to",
+          "option": "Publish staff"
+        },
+        {
+          "fill": "Start (location time)",
+          "value": "2099-06-08T09:00"
+        },
+        {
+          "fill": "End (location time)",
+          "value": "2099-06-08T17:00"
+        },
+        {
+          "click": "Add shift"
+        },
+        {
+          "expectText": "Saved."
+        },
+        {
+          "click": "Publish week"
+        },
+        {
+          "expectText": "Published rota"
+        },
+        {
+          "enterAs": "visitor"
+        },
+        {
+          "goto": "/"
+        },
+        {
+          "fill": "Email",
+          "value": "publish@rota.test"
+        },
+        {
+          "fill": "Password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Sign in"
+        },
+        {
+          "expectText": "Signed in"
+        },
+        {
+          "goto": "/rota"
+        },
+        {
+          "expectText": "2099-06-08 09:00"
+        },
+        {
+          "expectText": "Publish staff"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

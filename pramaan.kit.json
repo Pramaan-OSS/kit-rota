@@ -1,0 +1,237 @@
+{
+  "id": "rota",
+  "version": "0.1.0",
+  "title": "Staff rota",
+  "summary": "Plan weekly shifts, invite staff, approve swaps and time off, and publish the rota.",
+  "category": "hrms",
+  "stack": {
+    "contract": "1",
+    "template": "data",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "node": "24.18.0",
+    "packageManager": "pnpm@11.15.1"
+  },
+  "licence": "MIT",
+  "provenance": {
+    "mode": "derived",
+    "starter": "Pramaan-Dev/product-loop@370419379645405019af029fa08a75680ad75c8b",
+    "derivedFrom": ["Pramaan-Dev/product-loop@370419379645405019af029fa08a75680ad75c8b"],
+    "upstreamNotices": ["NOTICE.md"],
+    "writtenBy": "person"
+  },
+  "measured": {
+    "on": "2026-11-14",
+    "by": "person",
+    "draft": {
+      "peakMiB": 1076,
+      "limitMiB": 2560,
+      "firstAnswerSeconds": 3
+    },
+    "verifier": {
+      "peakMiB": 1182,
+      "limitMiB": 2048,
+      "seconds": 4
+    },
+    "browser": {
+      "peakMiB": 211,
+      "limitMiB": 1024
+    }
+  },
+  "entryPoints": [
+    {
+      "route": "/",
+      "file": "app/page.tsx",
+      "audience": "visitor",
+      "summary": "Sign in to see the rota."
+    },
+    {
+      "route": "/invite",
+      "file": "app/invite/page.tsx",
+      "audience": "visitor",
+      "summary": "Accept a one-time invitation."
+    },
+    {
+      "route": "/rota",
+      "file": "app/rota/page.tsx",
+      "audience": "staff",
+      "summary": "See published shifts, claim open shifts and offer or take swaps."
+    },
+    {
+      "route": "/availability",
+      "file": "app/availability/page.tsx",
+      "audience": "staff",
+      "summary": "Set weekly availability and request time off; managers review requests."
+    },
+    {
+      "route": "/team",
+      "file": "app/team/page.tsx",
+      "audience": "manager",
+      "summary": "Import staff and invite them to sign in."
+    },
+    {
+      "route": "/settings",
+      "file": "app/settings/page.tsx",
+      "audience": "owner",
+      "summary": "Edit locations, positions and shift types."
+    },
+    {
+      "route": "/owner",
+      "file": "app/owner/page.tsx",
+      "audience": "owner",
+      "summary": "Choose the owner sign-in email and password."
+    },
+    {
+      "route": "/password-reset",
+      "file": "app/password-reset/page.tsx",
+      "audience": "visitor",
+      "summary": "Request a reset email."
+    },
+    {
+      "route": "/reset-password",
+      "file": "app/reset-password/page.tsx",
+      "audience": "visitor",
+      "summary": "Choose a new password from a reset link."
+    }
+  ],
+  "roles": {
+    "owner": {
+      "source": "owner-pass",
+      "summary": "Owns the business, adds managers and edits settings."
+    },
+    "manager": {
+      "source": "added-by-owner",
+      "summary": "Drafts and publishes weeks, invites staff and approves requests."
+    },
+    "staff": {
+      "source": "added-by-owner",
+      "summary": "Sees published weeks, sets availability, claims shifts and requests swaps or leave."
+    },
+    "visitor": {
+      "source": "anonymous",
+      "summary": "Can sign in or accept an invitation."
+    }
+  },
+  "journeys": [
+    {
+      "id": "create-week",
+      "role": "owner",
+      "summary": "Create a draft week.",
+      "status": "ships-working",
+      "checklist": "journeys/create-week.json"
+    },
+    {
+      "id": "invite-staff",
+      "role": "owner",
+      "summary": "Invite staff with a one-time link.",
+      "status": "ships-working",
+      "checklist": "journeys/invite-staff.json"
+    },
+    {
+      "id": "edit-settings",
+      "role": "owner",
+      "summary": "Add an editable position.",
+      "status": "ships-working",
+      "checklist": "journeys/edit-settings.json"
+    },
+    {
+      "id": "owner-settings",
+      "role": "owner",
+      "summary": "Open owner settings through the owner pass.",
+      "status": "ships-working",
+      "checklist": "journeys/owner-settings.json"
+    },
+    {
+      "id": "signed-out",
+      "role": "visitor",
+      "summary": "Signed-out visitors cannot read rota rows.",
+      "status": "ships-working",
+      "checklist": "journeys/signed-out.json"
+    },
+    {
+      "id": "password-reset-off",
+      "role": "visitor",
+      "summary": "Explain that reset email needs the email module.",
+      "status": "ships-working",
+      "checklist": "journeys/password-reset-off.json"
+    },
+    {
+      "id": "publish-week",
+      "role": "manager",
+      "summary": "A manager publishes an assigned week and sends notices.",
+      "status": "ships-working",
+      "checklist": "journeys/publish-week.json"
+    },
+    {
+      "id": "approved-swap",
+      "role": "staff",
+      "summary": "A colleague takes an offered shift; a manager approves the reassignment.",
+      "status": "ships-working",
+      "checklist": "journeys/approved-swap.json"
+    },
+    {
+      "id": "open-shift-claim",
+      "role": "staff",
+      "summary": "Two colleagues claim one open shift; exactly one succeeds.",
+      "status": "ships-working",
+      "checklist": "journeys/open-shift-claim.json"
+    },
+    {
+      "id": "availability-and-leave",
+      "role": "staff",
+      "summary": "Staff save recurring availability and unavailable dates and request leave; a manager approves or declines.",
+      "status": "ships-working",
+      "checklist": "journeys/availability-and-leave.json"
+    },
+    {
+      "id": "invite-email",
+      "role": "owner",
+      "summary": "Invitation emails reach the selected staff member.",
+      "status": "needs-capability",
+      "capability": "email"
+    },
+    {
+      "id": "published-rota-email",
+      "role": "manager",
+      "summary": "Publishing sends the rota notice.",
+      "status": "needs-capability",
+      "capability": "email"
+    },
+    {
+      "id": "swap-time-off-email",
+      "role": "staff",
+      "summary": "Swap and time-off decisions send notices.",
+      "status": "needs-capability",
+      "capability": "email"
+    },
+    {
+      "id": "password-reset-email",
+      "role": "visitor",
+      "summary": "Receive and use a password reset link.",
+      "status": "needs-capability",
+      "capability": "email"
+    },
+    {
+      "id": "csv-staff-and-week",
+      "role": "manager",
+      "summary": "Import staff and download weekly shifts and hours.",
+      "status": "not-testable",
+      "reason": "File contents need the local tests and browser download walk; checklist steps cannot inspect downloaded files."
+    }
+  ],
+  "capabilities": ["accounts", "server_data", "roles", "email", "file_input", "download"],
+  "notIncluded": [
+    "Email needs the platform email module and a configured sender; off by default. With email off, inviters get one-time links to pass on.",
+    "No payroll, attendance, payments or automatic scheduling.",
+    "Published shifts are locked; swaps and open-shift claims are the supported staff changes.",
+    "No staff removal or multiple-workspace switching.",
+    "Clock-change times that are missing or repeated are refused; choose an unambiguous local time.",
+    "Weekly availability warns rather than blocks; overlapping assignments are always blocked."
+  ],
+  "protectedPaths": [
+    "lib/accounts.ts",
+    "lib/rota/access.ts",
+    "lib/rota/invites.ts",
+    "lib/rota/data.ts"
+  ]
+}

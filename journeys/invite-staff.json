@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": "invite-staff",
+      "label": "Invite staff with a one-time link.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/team"
+        },
+        {
+          "fill": "Name",
+          "value": "Sam"
+        },
+        {
+          "fill": "Email",
+          "value": "sam@rota.test"
+        },
+        {
+          "click": "Invite person"
+        },
+        {
+          "expectText": "Open one-time invitation"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

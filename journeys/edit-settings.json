@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "id": "edit-settings",
+      "label": "Add an editable position.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/settings"
+        },
+        {
+          "fill": "New position name",
+          "value": "Front desk"
+        },
+        {
+          "click": "Add position"
+        },
+        {
+          "expectText": "Front desk"
+        },
+        {
+          "click": "Remove Front desk"
+        },
+        {
+          "expectAbsent": "Front desk"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}
