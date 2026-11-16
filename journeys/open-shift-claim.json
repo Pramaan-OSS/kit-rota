@@ -78,7 +78,7 @@
           "expectText": "Published rota"
         },
         {
-          "enterAs": "visitor"
+          "enterAs": "staff"
         },
         {
           "goto": "/"

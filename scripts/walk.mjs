@@ -14,7 +14,8 @@ const { chromium, expect } = await import(
 import { Pool } from "pg";
 import { startFakeDoor } from "./fake-door.mjs";
 
-const origin = "http://127.0.0.1:3520",
+const port = process.env.WALK_PORT ?? "3520",
+  origin = `http://127.0.0.1:${port}`,
   secret = randomBytes(32).toString("hex"),
   project = "rota-walk";
 if (!process.env.DATABASE_URL) throw Error("Use a disposable migrated DATABASE_URL.");
@@ -49,7 +50,7 @@ function pass(extra = {}) {
 }
 const child = spawn(
   process.execPath,
-  ["node_modules/next/dist/bin/next", "start", "-p", "3520", "-H", "127.0.0.1"],
+  ["node_modules/next/dist/bin/next", "start", "-p", port, "-H", "127.0.0.1"],
   {
     env: {
       ...process.env,
@@ -93,6 +94,17 @@ async function context() {
 }
 async function post(c, body, url = "/api/rota") {
   return c.request.post(url, { headers: { origin }, data: body });
+}
+// As kit CI does: who the app says is signed in at each check, and a journey not for the owner or a visitor needs one
+// check signed in, in a browser entered as its own role.
+async function sessionRole(p) {
+  const r = await p.request.get("/api/account/session");
+  return r.ok() ? ((await r.json()).user?.role ?? null) : null;
+}
+function provenSignedIn(j, seen) {
+  if (j.role === "owner") return seen.some((s) => s.as === "owner" && s.role === "owner");
+  if (manifest.roles[j.role]?.source === "anonymous") return true;
+  return seen.some((s) => s.as === j.role && typeof s.role === "string" && s.role !== "owner");
 }
 function note(s) {
   checks.push(s);
@@ -147,11 +159,14 @@ try {
     // As the gate does: enterAs opens a fresh browser at home (signed out; the owner's signs in with a pass), and an
     // enterAs with "as" returns to that named person's browser.
     const opened = [c],
-      named = new Map();
+      named = new Map(),
+      seen = [];
     try {
-      for (const item of JSON.parse(readFileSync(j.checklist, "utf8")).items)
+      for (const item of JSON.parse(readFileSync(j.checklist, "utf8")).items) {
+        let as = null;
         for (const step of item.steps) {
           if (step.enterAs) {
+            as = step.enterAs;
             const key = `${step.enterAs}\u0000${step.as ?? ""}`;
             if (step.as && named.has(key)) ({ c, p } = named.get(key));
             else {
@@ -180,7 +195,12 @@ try {
           else if (step.expectAbsent)
             await expect(p.getByText(step.expectAbsent, { exact: false })).toHaveCount(0);
           else throw Error("Unsupported checklist step");
+          if (Object.keys(step).some((k) => k.startsWith("expect")))
+            seen.push({ as, role: await sessionRole(p) });
         }
+      }
+      if (!provenSignedIn(j, seen))
+        throw Error(`${j.id}: no check ran signed in as ${j.role}: ${JSON.stringify(seen)}`);
       results.push(j.id);
       console.log(`journey passed: ${j.id}`);
     } catch (e) {

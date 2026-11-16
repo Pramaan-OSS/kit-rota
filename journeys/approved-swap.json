@@ -119,7 +119,8 @@
           "expectText": "Published rota"
         },
         {
-          "enterAs": "visitor"
+          "enterAs": "staff",
+          "as": "giver"
         },
         {
           "goto": "/"
@@ -148,7 +149,8 @@
           "expectText": "Awaiting a colleague"
         },
         {
-          "enterAs": "visitor"
+          "enterAs": "staff",
+          "as": "taker"
         },
         {
           "goto": "/"
