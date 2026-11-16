@@ -144,14 +144,24 @@ try {
   browser = await chromium.launch({ headless: true });
   for (const j of manifest.journeys.filter((j) => j.status === "ships-working")) {
     let { c, p } = await context();
+    // As the gate does: enterAs opens a fresh browser at home (signed out; the owner's signs in with a pass), and an
+    // enterAs with "as" returns to that named person's browser.
+    const opened = [c],
+      named = new Map();
     try {
       for (const item of JSON.parse(readFileSync(j.checklist, "utf8")).items)
         for (const step of item.steps) {
           if (step.enterAs) {
-            await c.close();
-            ({ c, p } = await context());
-            if (step.enterAs === "owner") await p.goto(`/api/account/owner-pass?token=${pass()}`);
-            else if (step.enterAs !== "visitor") throw Error(`Unsupported role ${step.enterAs}`);
+            const key = `${step.enterAs}\u0000${step.as ?? ""}`;
+            if (step.as && named.has(key)) ({ c, p } = named.get(key));
+            else {
+              ({ c, p } = await context());
+              opened.push(c);
+              await p.goto(
+                step.enterAs === "owner" ? `/api/account/owner-pass?token=${pass()}` : "/",
+              );
+              if (step.as) named.set(key, { c, p });
+            }
           } else if (step.goto) await p.goto(step.goto);
           else if (step.fill) await p.getByLabel(step.fill, { exact: true }).fill(step.value);
           else if (step.select)
@@ -177,7 +187,7 @@ try {
       await p.screenshot({ path: `.evidence/failed-${j.id}.png`, fullPage: true });
       throw e;
     } finally {
-      await c.close();
+      for (const context of opened) await context.close();
     }
   }
   door.emailOn = true;

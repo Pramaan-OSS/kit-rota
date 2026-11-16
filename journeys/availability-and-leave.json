@@ -42,6 +42,24 @@
           "expectText": "Signed in"
         },
         {
+          "enterAs": "staff",
+          "as": "first"
+        },
+        {
+          "fill": "Email",
+          "value": "leave@rota.test"
+        },
+        {
+          "fill": "Password",
+          "value": "Rota journey pass!"
+        },
+        {
+          "click": "Sign in"
+        },
+        {
+          "expectText": "Signed in as leave@rota.test"
+        },
+        {
           "goto": "/availability"
         },
         {
@@ -94,6 +112,16 @@
         },
         {
           "click": "Approve time off"
+        },
+        {
+          "expectText": "approved"
+        },
+        {
+          "enterAs": "staff",
+          "as": "first"
+        },
+        {
+          "goto": "/availability"
         },
         {
           "expectText": "approved"
