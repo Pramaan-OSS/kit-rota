@@ -16,7 +16,7 @@
         },
         {
           "fill": "Email",
-          "value": "claim@rota.test"
+          "value": "delivered+rota-claim@resend.dev"
         },
         {
           "click": "Invite person"
@@ -85,7 +85,7 @@
         },
         {
           "fill": "Email",
-          "value": "claim@rota.test"
+          "value": "delivered+rota-claim@resend.dev"
         },
         {
           "fill": "Password",

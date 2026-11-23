@@ -16,7 +16,7 @@
         },
         {
           "fill": "Email",
-          "value": "leave@rota.test"
+          "value": "delivered+rota-leave@resend.dev"
         },
         {
           "click": "Invite person"
@@ -47,7 +47,7 @@
         },
         {
           "fill": "Email",
-          "value": "leave@rota.test"
+          "value": "delivered+rota-leave@resend.dev"
         },
         {
           "fill": "Password",
@@ -57,7 +57,7 @@
           "click": "Sign in"
         },
         {
-          "expectText": "Signed in as leave@rota.test"
+          "expectText": "Signed in as delivered+rota-leave@resend.dev"
         },
         {
           "goto": "/availability"

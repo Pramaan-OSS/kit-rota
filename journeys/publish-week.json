@@ -16,7 +16,7 @@
         },
         {
           "fill": "Email",
-          "value": "publish@rota.test"
+          "value": "delivered+rota-publish@resend.dev"
         },
         {
           "click": "Invite person"
@@ -53,7 +53,7 @@
         },
         {
           "fill": "Email",
-          "value": "publish-manager@rota.test"
+          "value": "delivered+rota-publish-manager@resend.dev"
         },
         {
           "select": "Role",
@@ -90,7 +90,7 @@
         },
         {
           "fill": "Email",
-          "value": "publish-manager@rota.test"
+          "value": "delivered+rota-publish-manager@resend.dev"
         },
         {
           "fill": "Password",
@@ -100,7 +100,7 @@
           "click": "Sign in"
         },
         {
-          "expectText": "Signed in as publish-manager@rota.test, a manager."
+          "expectText": "Signed in as delivered+rota-publish-manager@resend.dev, a manager."
         },
         {
           "goto": "/rota"
@@ -147,7 +147,7 @@
         },
         {
           "fill": "Email",
-          "value": "publish@rota.test"
+          "value": "delivered+rota-publish@resend.dev"
         },
         {
           "fill": "Password",
@@ -157,7 +157,7 @@
           "click": "Sign in"
         },
         {
-          "expectText": "Signed in as publish@rota.test, a staff member."
+          "expectText": "Signed in as delivered+rota-publish@resend.dev, a staff member."
         },
         {
           "goto": "/rota"

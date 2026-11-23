@@ -227,11 +227,11 @@ try {
     await c.close();
   }
   note("owner pass works once; replay, foreign, expired and forged passes fail");
-  const manager = await invite(op, "Walk manager", "manager@walk.test", "manager");
-  const a = await invite(op, "Walk Alice", "alice@walk.test");
-  const b = await invite(op, "Walk Bea", "bea@walk.test");
+  const manager = await invite(op, "Walk manager", "delivered+rota-manager@resend.dev", "manager");
+  const a = await invite(op, "Walk Alice", "delivered+rota-alice@resend.dev");
+  const b = await invite(op, "Walk Bea", "delivered+rota-bea@resend.dev");
   await manager.c.close();
-  const mgr = await signin("manager@walk.test");
+  const mgr = await signin("delivered+rota-manager@resend.dev");
   note(
     "manager and both staff accept emailed invitations and sign in; manager saved-password sign-in works",
   );
@@ -267,7 +267,7 @@ try {
       await post(mgr.c, {
         action: "invite",
         name: "Denied",
-        email: "denied@walk.test",
+        email: "delivered+rota-denied@resend.dev",
         role: "manager",
       })
     ).status(),
@@ -293,7 +293,9 @@ try {
   await expect(mgr.p.getByRole("heading", { name: "Published rota", exact: true })).toBeVisible();
   expect(
     door.mail.some(
-      (m) => m.to === "alice@walk.test" && m.subject === "Your rota week has been published",
+      (m) =>
+        m.to === "delivered+rota-alice@resend.dev" &&
+        m.subject === "Your rota week has been published",
     ),
   ).toBe(true);
   await a.p.goto("/rota");
@@ -333,7 +335,7 @@ try {
   await mgr.p.getByLabel("Staff CSV", { exact: true }).setInputFiles({
     name: "staff.csv",
     mimeType: "text/csv",
-    buffer: Buffer.from("Name,Email\nImported person,imported@walk.test"),
+    buffer: Buffer.from("Name,Email\nImported person,delivered+rota-imported@resend.dev"),
   });
   await expect(mgr.p.getByText("Imported 1 staff.", { exact: false })).toBeVisible();
   await mgr.p.goto("/rota");

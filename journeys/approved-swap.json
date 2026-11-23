@@ -16,7 +16,7 @@
         },
         {
           "fill": "Email",
-          "value": "giver@rota.test"
+          "value": "delivered+rota-giver@resend.dev"
         },
         {
           "click": "Invite person"
@@ -53,7 +53,7 @@
         },
         {
           "fill": "Email",
-          "value": "taker@rota.test"
+          "value": "delivered+rota-taker@resend.dev"
         },
         {
           "click": "Invite person"
@@ -127,7 +127,7 @@
         },
         {
           "fill": "Email",
-          "value": "giver@rota.test"
+          "value": "delivered+rota-giver@resend.dev"
         },
         {
           "fill": "Password",
@@ -157,7 +157,7 @@
         },
         {
           "fill": "Email",
-          "value": "taker@rota.test"
+          "value": "delivered+rota-taker@resend.dev"
         },
         {
           "fill": "Password",
